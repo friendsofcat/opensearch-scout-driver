@@ -1,15 +1,7 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\ScoutDriver;
+namespace OpenSearch\ScoutDriver;
 
-use Elastic\Adapter\Documents\DocumentManager;
-use Elastic\Adapter\Indices\Index;
-use Elastic\Adapter\Indices\IndexManager;
-use Elastic\Adapter\Search\Hit;
-use Elastic\Adapter\Search\SearchResult;
-use Elastic\ScoutDriver\Factories\DocumentFactoryInterface;
-use Elastic\ScoutDriver\Factories\ModelFactoryInterface;
-use Elastic\ScoutDriver\Factories\SearchParametersFactoryInterface;
 use Illuminate\Database\Eloquent\Collection as EloquentCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection as BaseCollection;
@@ -17,6 +9,14 @@ use Illuminate\Support\LazyCollection;
 use InvalidArgumentException;
 use Laravel\Scout\Builder;
 use Laravel\Scout\Engines\Engine as AbstractEngine;
+use OpenSearch\Adapter\Documents\DocumentManager;
+use OpenSearch\Adapter\Indices\Index;
+use OpenSearch\Adapter\Indices\IndexManager;
+use OpenSearch\Adapter\Search\Hit;
+use OpenSearch\Adapter\Search\SearchResult;
+use OpenSearch\ScoutDriver\Factories\DocumentFactoryInterface;
+use OpenSearch\ScoutDriver\Factories\ModelFactoryInterface;
+use OpenSearch\ScoutDriver\Factories\SearchParametersFactoryInterface;
 use stdClass;
 
 class Engine extends AbstractEngine
@@ -35,7 +35,7 @@ class Engine extends AbstractEngine
         ModelFactoryInterface $modelFactory,
         IndexManager $indexManager
     ) {
-        $this->refreshDocuments = (bool)config('elastic.scout_driver.refresh_documents');
+        $this->refreshDocuments = (bool)config('opensearch.scout_driver.refresh_documents');
 
         $this->documentManager = $documentManager;
         $this->documentFactory = $documentFactory;

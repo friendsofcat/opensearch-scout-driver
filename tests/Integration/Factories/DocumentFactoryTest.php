@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\ScoutDriver\Tests\Integration\Factories;
+namespace OpenSearch\ScoutDriver\Tests\Integration\Factories;
 
-use Elastic\ScoutDriver\Factories\DocumentFactory;
-use Elastic\ScoutDriver\Tests\App\Client;
-use Elastic\ScoutDriver\Tests\Integration\TestCase;
+use OpenSearch\ScoutDriver\Factories\DocumentFactory;
+use OpenSearch\ScoutDriver\Tests\App\Client;
+use OpenSearch\ScoutDriver\Tests\Integration\TestCase;
 use UnexpectedValueException;
 
 /**
- * @covers \Elastic\ScoutDriver\Factories\DocumentFactory
+ * @covers \OpenSearch\ScoutDriver\Factories\DocumentFactory
  *
- * @uses   \Elastic\ScoutDriver\Engine
+ * @uses   \OpenSearch\ScoutDriver\Engine
  */
 final class DocumentFactoryTest extends TestCase
 {

@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\ScoutDriver\Tests\Integration;
+namespace OpenSearch\ScoutDriver\Tests\Integration;
 
-use Elastic\Client\ServiceProvider as ElasticClientServiceProvider;
-use Elastic\Migrations\ServiceProvider as ElasticMigrationsServiceProvider;
-use Elastic\ScoutDriver\ServiceProvider as ElasticScoutDriverServiceProvider;
 use Illuminate\Config\Repository;
 use Laravel\Scout\ScoutServiceProvider;
+use OpenSearch\Laravel\Client\ServiceProvider as OpenSearchClientServiceProvider;
+use OpenSearch\Migrations\ServiceProvider as OpenSearchMigrationsServiceProvider;
+use OpenSearch\ScoutDriver\ServiceProvider as OpenSearchScoutDriverServiceProvider;
 use Orchestra\Testbench\TestCase as TestbenchTestCase;
 
 class TestCase extends TestbenchTestCase
@@ -17,9 +17,9 @@ class TestCase extends TestbenchTestCase
     {
         return [
             ScoutServiceProvider::class,
-            ElasticClientServiceProvider::class,
-            ElasticMigrationsServiceProvider::class,
-            ElasticScoutDriverServiceProvider::class,
+            OpenSearchClientServiceProvider::class,
+            OpenSearchMigrationsServiceProvider::class,
+            OpenSearchScoutDriverServiceProvider::class,
         ];
     }
 
@@ -28,9 +28,9 @@ class TestCase extends TestbenchTestCase
         parent::getEnvironmentSetUp($app);
 
         $this->config = $app['config'];
-        $this->config->set('scout.driver', 'elastic');
-        $this->config->set('elastic.migrations.storage.default_path', dirname(__DIR__) . '/App/elastic/migrations');
-        $this->config->set('elastic.scout_driver.refresh_documents', true);
+        $this->config->set('scout.driver', 'opensearch');
+        $this->config->set('opensearch.migrations.storage.default_path', dirname(__DIR__) . '/App/opensearch/migrations');
+        $this->config->set('opensearch.scout_driver.refresh_documents', true);
     }
 
     protected function setUp(): void
@@ -41,12 +41,12 @@ class TestCase extends TestbenchTestCase
         $this->withFactories(dirname(__DIR__) . '/App/database/factories');
 
         $this->artisan('migrate')->run();
-        $this->artisan('elastic:migrate')->run();
+        $this->artisan('opensearch:migrate')->run();
     }
 
     protected function tearDown(): void
     {
-        $this->artisan('elastic:migrate:reset')->run();
+        $this->artisan('opensearch:migrate:reset')->run();
         $this->artisan('migrate:reset')->run();
 
         parent::tearDown();

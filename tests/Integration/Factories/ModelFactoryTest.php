@@ -1,19 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\ScoutDriver\Tests\Integration\Factories;
+namespace OpenSearch\ScoutDriver\Tests\Integration\Factories;
 
-use Elastic\Adapter\Search\SearchResult;
-use Elastic\ScoutDriver\Factories\ModelFactory;
-use Elastic\ScoutDriver\Tests\App\Client;
-use Elastic\ScoutDriver\Tests\Integration\TestCase;
 use Laravel\Scout\Builder;
 use Laravel\Scout\Searchable;
+use OpenSearch\Adapter\Search\SearchResult;
+use OpenSearch\ScoutDriver\Factories\ModelFactory;
+use OpenSearch\ScoutDriver\Tests\App\Client;
+use OpenSearch\ScoutDriver\Tests\Integration\TestCase;
 
 /**
- * @covers \Elastic\ScoutDriver\Factories\ModelFactory
+ * @covers \OpenSearch\ScoutDriver\Factories\ModelFactory
  *
- * @uses   \Elastic\ScoutDriver\Engine
- * @uses   \Elastic\ScoutDriver\Factories\DocumentFactory
+ * @uses   \OpenSearch\ScoutDriver\Engine
+ * @uses   \OpenSearch\ScoutDriver\Factories\DocumentFactory
  */
 final class ModelFactoryTest extends TestCase
 {
@@ -40,6 +40,7 @@ final class ModelFactoryTest extends TestCase
 
     /**
      * @dataProvider factoryMethodProvider
+     *
      * @testdox Test empty model collection is made from empty search response using $factoryMethod
      */
     public function test_empty_model_collection_is_made_from_empty_search_result(string $factoryMethod): void
@@ -60,6 +61,7 @@ final class ModelFactoryTest extends TestCase
 
     /**
      * @dataProvider factoryMethodProvider
+     *
      * @testdox Test empty model collection can be made from not empty search response using $factoryMethod
      */
     public function test_model_collection_can_be_made_from_not_empty_search_result(string $factoryMethod): void
