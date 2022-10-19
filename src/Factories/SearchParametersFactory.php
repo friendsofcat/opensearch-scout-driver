@@ -1,9 +1,9 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\ScoutDriver\Factories;
+namespace OpenSearch\ScoutDriver\Factories;
 
-use Elastic\Adapter\Search\SearchParameters;
 use Laravel\Scout\Builder;
+use OpenSearch\Adapter\Search\SearchParameters;
 use stdClass;
 
 class SearchParametersFactory implements SearchParametersFactoryInterface

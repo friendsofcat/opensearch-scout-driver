@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\ScoutDriver;
+namespace OpenSearch\ScoutDriver;
 
-use Elastic\ScoutDriver\Factories\DocumentFactory;
-use Elastic\ScoutDriver\Factories\DocumentFactoryInterface;
-use Elastic\ScoutDriver\Factories\ModelFactory;
-use Elastic\ScoutDriver\Factories\ModelFactoryInterface;
-use Elastic\ScoutDriver\Factories\SearchParametersFactory;
-use Elastic\ScoutDriver\Factories\SearchParametersFactoryInterface;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider as AbstractServiceProvider;
 use Laravel\Scout\EngineManager;
+use OpenSearch\ScoutDriver\Factories\DocumentFactory;
+use OpenSearch\ScoutDriver\Factories\DocumentFactoryInterface;
+use OpenSearch\ScoutDriver\Factories\ModelFactory;
+use OpenSearch\ScoutDriver\Factories\ModelFactoryInterface;
+use OpenSearch\ScoutDriver\Factories\SearchParametersFactory;
+use OpenSearch\ScoutDriver\Factories\SearchParametersFactoryInterface;
 
 final class ServiceProvider extends AbstractServiceProvider
 {
@@ -26,7 +26,7 @@ final class ServiceProvider extends AbstractServiceProvider
     {
         parent::__construct($app);
 
-        $this->configPath = dirname(__DIR__) . '/config/elastic.scout_driver.php';
+        $this->configPath = dirname(__DIR__) . '/config/opensearch.scout_driver.php';
     }
 
     /**
@@ -53,6 +53,6 @@ final class ServiceProvider extends AbstractServiceProvider
             $this->configPath => config_path(basename($this->configPath)),
         ]);
 
-        resolve(EngineManager::class)->extend('elastic', static fn () => resolve(Engine::class));
+        resolve(EngineManager::class)->extend('opensearch', static fn () => resolve(Engine::class));
     }
 }

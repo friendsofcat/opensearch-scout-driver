@@ -1,18 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\ScoutDriver\Tests\Integration\Engine;
+namespace OpenSearch\ScoutDriver\Tests\Integration\Engine;
 
-use Elastic\Adapter\Indices\IndexManager;
-use Elastic\ScoutDriver\Engine;
-use Elastic\ScoutDriver\Tests\Integration\TestCase;
 use InvalidArgumentException;
+use OpenSearch\Adapter\Indices\IndexManager;
+use OpenSearch\ScoutDriver\Engine;
+use OpenSearch\ScoutDriver\Tests\Integration\TestCase;
 
 /**
- * @covers \Elastic\ScoutDriver\Engine
+ * @covers \OpenSearch\ScoutDriver\Engine
  */
 final class EngineIndexTest extends TestCase
 {
-    private const INDEX_NAME = 'test';
+    private const INDEX_NAME = 'opensearch-scout-driver-test-index';
 
     private IndexManager $indexManager;
     private Engine $engine;
@@ -27,6 +27,10 @@ final class EngineIndexTest extends TestCase
 
     public function test_index_with_given_name_can_be_created(): void
     {
+        if ($this->indexManager->exists(self::INDEX_NAME)) {
+            $this->engine->deleteIndex(self::INDEX_NAME);
+        }
+
         $this->engine->createIndex(self::INDEX_NAME);
         $this->assertTrue($this->indexManager->exists(self::INDEX_NAME));
     }

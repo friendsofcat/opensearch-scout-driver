@@ -8,7 +8,7 @@ assignees: ''
 ---
 
 <!-- 
-- Please do not report a bug if you are using PHP, Elasticsearch, Laravel or Scout versions, which are not compatible. Check https://github.com/babenkoivan/elastic-scout-driver#compatibility for more details.
+- Please do not report a bug if you are using PHP, OpenSearch, Laravel or Scout versions, which are not compatible.
 - Please fill in this template in order to help us to understand and reproduce the issue.
 - Please do not post code as a screenshot, post it as text instead (using proper Markdown).
 -->
@@ -16,7 +16,7 @@ assignees: ''
 | Software         | Version
 | --------------| ---------------
 | PHP                 | x.y.z
-| Elasticsearch  | x.y.z
+| OpenSearch  | x.y.z
 | Laravel            | x.y.z
 | Laravel Scout | x.y.z
 
