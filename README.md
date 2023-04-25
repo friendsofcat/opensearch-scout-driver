@@ -16,7 +16,7 @@ OpenSearch driver for Laravel Scout.
 
 The current version of OpenSearch Scout Driver has been tested with the following configuration:
 
-* PHP 7.4-8.0
+* PHP 7.4-8.2
 * OpenSearch 2.x
 * Laravel 7.x-10.x
 * Laravel Scout 7.x-10.x
