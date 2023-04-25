@@ -26,7 +26,7 @@ final class ModelFactoryTest extends TestCase
         $this->modelFactory = new ModelFactory();
     }
 
-    public function factoryMethodProvider(): array
+    public static function factoryMethodProvider(): array
     {
         $methods = [['makeFromSearchResult']];
 

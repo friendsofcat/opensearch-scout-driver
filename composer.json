@@ -31,16 +31,16 @@
     },
     "require": {
         "php": "^7.4 || ^8.0",
-        "friendsofcat/opensearch-adapter": "^0.2"
+        "friendsofcat/opensearch-adapter": "^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
         "orchestra/testbench": "^7.5",
-        "laravel/scout": "^9.4",
+        "laravel/scout": "^10.0",
         "friendsofphp/php-cs-fixer": "^3.8",
         "phpstan/phpstan": "^1.6",
         "laravel/legacy-factories": "^1.3",
-        "friendsofcat/opensearch-migrations": "^0.2"
+        "friendsofcat/opensearch-migrations": "^2.0"
     },
     "extra": {
         "laravel": {
