@@ -4,13 +4,15 @@ OpenSearch driver for Laravel Scout.
 
 ## Contents
 
-* [Compatibility](#compatibility)
-* [Installation](#installation)
-* [Configuration](#configuration)
-* [Basic Usage](#basic-usage)
-* [Advanced Search](#advanced-search)
-* [Migrations](#migrations)
-* [Pitfalls](#pitfalls)
+- [OpenSearch Scout Driver](#opensearch-scout-driver)
+  - [Contents](#contents)
+  - [Compatibility](#compatibility)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+  - [Basic usage](#basic-usage)
+  - [Advanced Search](#advanced-search)
+  - [Migrations](#migrations)
+  - [Pitfalls](#pitfalls)
 
 ## Compatibility
 
@@ -30,6 +32,7 @@ composer require friendsofcat/opensearch-scout-driver
 ```
 
 **Note**, that this library is just a driver for Laravel Scout, don't forget to install it beforehand:
+
 ```bash
 composer require laravel/scout
 ```
@@ -48,7 +51,7 @@ Then, change the `driver` option in the `config/scout.php` file to `opensearch`:
 'driver' => env('SCOUT_DRIVER', 'opensearch'),
 ```
 
-If you want to use OpenSearch Scout Driver with [Lumen framework](https://lumen.laravel.com/) check [this guide](https://github.com/babenkoivan/elastic-scout-driver/wiki/Lumen-Installation).
+If you want to use OpenSearch Scout Driver with [Lumen framework](https://lumen.laravel.com/) check [this guide](/wiki/Lumen-Installation.md).
 
 ## Configuration
 
@@ -90,6 +93,7 @@ $orders = App\Order::search('title:(Star OR Trek)')->get();
 
 When the query string is omitted, the [match all query](https://opensearch.org/docs/1.3/opensearch/query-dsl/full-text/#match-all)
 is used:
+
 ```php
 $orders = App\Order::search()->where('user_id', 1)->get();
 ```
@@ -112,21 +116,27 @@ that gives you Laravel database migrations.
 ## Pitfalls
 
 There are few things, which are slightly different from other Scout drivers:
+
 * As you probably know, Scout only indexes fields, which are returned by the `toSearchableArray` method.
 OpenSearch driver indexes a model even when `toSearchableArray` returns an empty array. You can change this behaviour by
 overwriting the `shouldBeSearchable` method of your model:
+
 ```php
 public function shouldBeSearchable()
 {
     return count($this->toSearchableArray()) > 0;
 }
 ```
+
 * Raw search returns an instance of `SearchResult` class (see [OpenSearch Adapter](https://github.com/friendsofcat/opensearch-adapter#search)):
+
 ```php
 $searchResult = App\Order::search('Star Trek')->raw();
 ```
+
 * To be compatible with other drivers and to not expose internal implementation of the engine, OpenSearch driver ignores callback
 parameter of the `search` method:
+
 ```php
 App\Order::search('Star Trek', function () {
     // this will not be triggered
